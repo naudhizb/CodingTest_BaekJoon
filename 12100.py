@@ -50,7 +50,16 @@ def reduce(l, isright=False):
     return ret
 
 #ref : https://choichumji.tistory.com/74
-def rotate(arr):
+def rotate_ccw(arr):
+    lot = list(zip(*arr[::-1]))
+    # print(lot)
+    ret = [list(elem) for elem in lot]
+    for i in range(len(ret)):
+        ret[i].reverse()
+    ret.reverse()
+    return ret
+
+def rotate_cw(arr):
     cw = -1
     lot = zip(*arr[::cw])
     ret = [list(elem) for elem in lot]
@@ -69,19 +78,15 @@ def mv_right (mat):
     return nmat
 
 def mv_up(mat):
-    nmat = rotate(mat)
-    nmat = mv_right(nmat)
-    nmat = rotate(nmat)
-    nmat = rotate(nmat)
-    nmat = rotate(nmat)
+    nmat = rotate_ccw(mat)
+    nmat = mv_left(nmat)
+    nmat = rotate_cw(nmat)
     return nmat
 
 def mv_down(mat):
-    nmat = rotate(mat)
-    nmat = rotate(nmat)
-    nmat = rotate(nmat)
-    nmat = mv_right(nmat)
-    nmat = rotate(nmat)
+    nmat = rotate_cw(mat)
+    nmat = mv_left(nmat)
+    nmat = rotate_ccw(nmat)
     return nmat
 
 def DFS(mat, i):
@@ -111,8 +116,24 @@ def DFS(mat, i):
 # print(mv_left(matrix))
 # print(mv_right(matrix))
 # t = rotate(matrix)
-#
+
+# t = [[1,2,3],[4,5,6],[7,8,9]]
 # print(*t, sep='\n')
+# print()
+
+
+# t = rotate_ccw(matrix)
+# print(*t, sep='\n')
+# print()
+# t = rotate_ccw(t)
+# print(*t, sep='\n')
+# print()
+# t = rotate_ccw(t)
+# print(*t, sep='\n')
+# print()
+# t = rotate_ccw(t)
+# print(*t, sep='\n')
+# print()
 # print(*mv_up(t), sep='\n')
 #
 # print(*t, sep='\n')
