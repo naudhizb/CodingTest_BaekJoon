@@ -33,3 +33,8 @@ def combinations(arr, n):
 l = [1,2,3,4]
 print(permutations(l, 3))
 print(combinations(l, 3))
+
+import itertools
+
+print(list(itertools.permutations(l, 3)))
+print(list(itertools.combinations(l, 3)))
